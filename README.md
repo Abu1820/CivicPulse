@@ -197,16 +197,13 @@ React UI
 # 📸 Screenshots
 
 ## Home Page
-
-_Add screenshot_
+![Home](screenshots/home.png)
 
 ## Register Page
-
-_Add screenshot_
+![Register](screenshots/register.png)
 
 ## Login Page
-
-_Add screenshot_
+![Login](screenshots/login.png)
 
 ---
 
