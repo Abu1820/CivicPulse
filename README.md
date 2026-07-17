@@ -236,12 +236,12 @@ Topics include:
 
 ---
 
-# 👨‍💻 Author
+## 👨‍💻 Author
 
-**Abdul**
+**Abdul Majeed R**
 
 GitHub: https://github.com/Abu1820
 
----
+LinkedIn: www.linkedin.com/in/abdulmajeedr
 
 ⭐ If you found this project interesting, feel free to star the repository.
