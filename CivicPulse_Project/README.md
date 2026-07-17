@@ -1,96 +1,122 @@
-# CivicPulse - Smart Civic Issue Reporting Platform
+# 🏙️ CivicPulse – Smart Civic Issue Reporting Platform
 
-## Milestone 1 - User Authentication
+## 📖 Project Overview
 
-### Project Overview
+CivicPulse is a Full Stack Web Application that enables citizens to report and track civic issues such as potholes, garbage dumps, water leakage, and streetlight failures.
 
-CivicPulse is a full-stack web application that enables citizens to report public issues online. This milestone focuses on implementing a secure and user-friendly authentication system using React, Spring Boot, and MySQL.
-
----
-
-## Objective
-
-Develop a complete authentication module where users can:
-
-- Register a new account
-- Login using valid credentials
-- Maintain login session
-- Logout securely
-- Experience a responsive and modern user interface
+This project is being developed step by step using **React**, **Spring Boot**, and **MySQL**.
 
 ---
 
-## Technology Stack
+# 🚀 Current Status
 
-### Frontend
-- React.js (Vite)
+## ✅ Milestone 1 & 2 Completed
+
+The application currently supports:
+
+- User Registration
+- User Login
+- React–Spring Boot Integration
+- MySQL Database Connectivity
+- Responsive Authentication UI
+
+---
+
+# 🎯 Objective
+
+Develop a scalable civic issue reporting platform where users can:
+
+- Register an account
+- Login securely
+- Report civic issues
+- Track issue status
+- View dashboard statistics
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+- React (Vite)
 - React Router DOM
 - Axios
 - CSS
 
-### Backend
+## Backend
+
 - Java 17
 - Spring Boot
 - Spring Web
 - Spring Data JPA
 
-### Database
+## Database
+
 - MySQL
 
-### Tools
+## Tools
+
 - VS Code
 - Eclipse IDE
 - MySQL Workbench
 - Postman
-- Git & GitHub
+- Git
+- GitHub
 
 ---
 
-## Project Structure
+# 📂 Project Structure
 
 ```
 CivicPulse_Project/
 │
-├── frontend/
 ├── backend/
-├── database/
+│
+├── frontend/
+│
+├── exercises/
+│
 ├── screenshots/
-└── README.md
+│
+├── README.md
+│
+└── .gitignore
 ```
 
 ---
 
-## Features Completed
+# ✅ Features Completed
+
+## Authentication
 
 ### User Registration
+
 - Register new users
-- Validate user input
-- Prevent duplicate email registration
-- Store user details in MySQL
+- Validate user inputs
+- Save user details in MySQL
+- React form integrated with Spring Boot REST API
 
 ### User Login
-- Login using registered email and password
+
+- Login using email and password
 - Validate user credentials
-- Display appropriate success and error messages
-
-### Session Management
-- Store logged-in user information in Local Storage
-- Maintain user session until logout
-
-### Dynamic Navbar
-- Display Login and Register when logged out
-- Display Home, Report Issue, View Issues, Dashboard, and Logout when logged in
-
-### Form Validation
-- Required field validation
-- Email format validation
-- Password confirmation validation
+- Display success/error messages
+- Navigate to Dashboard after successful login
 
 ---
 
-## Database Design
+# 🌐 REST API Endpoints
 
-### User Table
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| POST | `/api/auth/register` | Register a new user |
+| POST | `/api/auth/login` | Login user |
+
+---
+
+# 🗄️ Database
+
+## User Table
 
 | Field | Type |
 |-------|------|
@@ -98,95 +124,66 @@ CivicPulse_Project/
 | name | String |
 | email | String |
 | password | String |
-| role | String |
-| createdDate | LocalDateTime |
 
 ---
 
-## API Endpoints
-
-| Method | Endpoint | Description |
-|---------|----------|-------------|
-| POST | `/auth/register` | Register a new user |
-| POST | `/auth/login` | Authenticate an existing user |
-
----
-
-## Application Flow
+# 🔄 Application Flow
 
 ```
-User
-
-↓
-
-Register / Login
-
-↓
-
 React Frontend
-
-↓
-
-Axios
-
-↓
-
+      │
+      ▼
+Axios HTTP Request
+      │
+      ▼
 Spring Boot REST API
-
-↓
-
+      │
+      ▼
 Service Layer
-
-↓
-
+      │
+      ▼
 Repository Layer
-
-↓
-
+      │
+      ▼
 MySQL Database
-
-↓
-
+      │
+      ▼
 Response
-
-↓
-
+      │
+      ▼
 React UI
 ```
 
 ---
 
-## Current Progress
+# 📈 Progress
 
-### Backend
-- [ ] Spring Boot Project Setup
-- [ ] MySQL Configuration
-- [ ] User Entity
-- [ ] User Repository
-- [ ] User Service
-- [ ] Authentication Controller
-- [ ] Register API
-- [ ] Login API
+## Backend
 
-### Frontend
-- [ ] React Project Setup
-- [ ] React Router Configuration
-- [ ] Navigation Bar
-- [ ] Register Page
-- [ ] Login Page
-- [ ] Axios Integration
-- [ ] Local Storage Session
+- ✅ Spring Boot Setup
+- ✅ MySQL Configuration
+- ✅ User Entity
+- ✅ User Repository
+- ✅ User Service
+- ✅ Authentication Controller
+- ✅ Register API
+- ✅ Login API
 
-### Testing
-- [ ] Register API Tested
-- [ ] Login API Tested
-- [ ] User Registration Working
-- [ ] User Login Working
-- [ ] Navbar Updated Dynamically
+## Frontend
+
+- ✅ React Project Setup
+- ✅ React Router
+- ✅ Navbar
+- ✅ Hero Section
+- ✅ Features Section
+- ✅ Footer
+- ✅ Register Page
+- ✅ Login Page
+- ✅ Axios Integration
 
 ---
 
-## Theme
+# 🎨 Theme
 
 | Purpose | Color |
 |----------|--------|
@@ -197,20 +194,57 @@ React UI
 
 ---
 
-## Screenshots
+# 📸 Screenshots
 
-Screenshots will be added after completing Milestone 1.
+## Home Page
+
+_Add screenshot_
+
+## Register Page
+
+_Add screenshot_
+
+## Login Page
+
+_Add screenshot_
 
 ---
 
-## Future Milestones
+# 🚀 Upcoming Features
 
-- Milestone 2 – Issue Reporting
-- Milestone 3 – Issue Tracking
-- Milestone 4 – Dashboard & Statistics
+- Report Civic Issue
+- View Reported Issues
+- Dashboard Statistics
+- Dynamic Navbar
+- Logout
+- Route Protection
+- Spring Security
+- JWT Authentication
 
 ---
 
-## Project Status
+# 📚 Exercises
 
-🚧 Milestone 1 is currently under development.
+This repository also contains Java programming and Data Structures & Algorithms practice inside the **exercises** folder.
+
+Topics include:
+
+- Arrays
+- Strings
+- Linked Lists
+- Trees
+- Graphs
+- LeetCode
+- HackerRank
+
+---
+
+# 👨‍💻 Author
+
+**Abdul**
+
+GitHub: https://github.com/Abu1820
+
+---
+
+⭐ If you found this project interesting, feel free to star the repository.
