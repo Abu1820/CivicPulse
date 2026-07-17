@@ -22,6 +22,34 @@ The application currently supports:
 
 ---
 
+# 🗺️ Project Roadmap
+
+## ✅ Milestone 1 – Backend Foundation
+- Spring Boot Setup
+- MySQL Integration
+- User Registration API
+- User Login API
+
+## ✅ Milestone 2 – Frontend Foundation
+- React Setup
+- Authentication UI
+- React Router
+- Axios Integration
+
+## 🔄 Milestone 3 – Core CivicPulse Features
+- Report Issue
+- View Issues
+- Dashboard Statistics
+- Dynamic Navbar
+- Logout
+- Route Protection
+
+## ⏳ Milestone 4 – Advanced Features
+- Spring Security
+- JWT Authentication
+- Role-Based Access
+- Deployment
+
 # 🎯 Objective
 
 Develop a scalable civic issue reporting platform where users can:
@@ -220,28 +248,16 @@ React UI
 
 ---
 
-# 📚 Exercises
-
-This repository also contains Java programming and Data Structures & Algorithms practice inside the **exercises** folder.
-
-Topics include:
-
-- Arrays
-- Strings
-- Linked Lists
-- Trees
-- Graphs
-- LeetCode
-- HackerRank
-
----
-
 ## 👨‍💻 Author
 
 **Abdul Majeed R**
 
 GitHub: https://github.com/Abu1820
 
-LinkedIn: www.linkedin.com/in/abdulmajeedr
+LinkedIn: https://www.linkedin.com/in/abdulmajeedr
+
+# 📄 License
+
+This project is for learning and portfolio purposes.
 
 ⭐ If you found this project interesting, feel free to star the repository.
