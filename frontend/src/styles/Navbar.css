@@ -1,0 +1,29 @@
+nav {
+    background-color: #0F172A;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+}
+
+nav h2 {
+    color: #14B8A6;
+    cursor: pointer;
+}
+
+nav div {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #14B8A6;
+}
