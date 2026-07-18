@@ -24,17 +24,20 @@ The application currently supports:
 
 # 🗺️ Project Roadmap
 
-## ✅ Milestone 1 – Backend Foundation
-- Spring Boot Setup
-- MySQL Integration
-- User Registration API
-- User Login API
-
-## ✅ Milestone 2 – Frontend Foundation
-- React Setup
+## ✅ Milestone 1 – Frontend Foundation
+- React (Vite) Setup
+- Home Page
 - Authentication UI
 - React Router
 - Axios Integration
+
+## ✅ Milestone 2 – Backend Foundation
+- Spring Boot Setup
+- MySQL Integration
+- Spring Data JPA
+- User Registration API
+- User Login API
+- React–Spring Boot Integration
 
 ## 🔄 Milestone 3 – Core CivicPulse Features
 - Report Issue
@@ -186,28 +189,29 @@ React UI
 
 # 📈 Progress
 
-## Backend
+📈 Progress
 
-- ✅ Spring Boot Setup
-- ✅ MySQL Configuration
-- ✅ User Entity
-- ✅ User Repository
-- ✅ User Service
-- ✅ Authentication Controller
-- ✅ Register API
-- ✅ Login API
+### Milestone 1 – Frontend
+✅ React Project Setup
+✅ React Router
+✅ Navbar
+✅ Hero Section
+✅ Features Section
+✅ Footer
+✅ Register Page
+✅ Login Page
+✅ Axios Integration
 
-## Frontend
-
-- ✅ React Project Setup
-- ✅ React Router
-- ✅ Navbar
-- ✅ Hero Section
-- ✅ Features Section
-- ✅ Footer
-- ✅ Register Page
-- ✅ Login Page
-- ✅ Axios Integration
+### Milestone 2 – Backend
+✅ Spring Boot Setup
+✅ MySQL Configuration
+✅ User Entity
+✅ User Repository
+✅ User Service
+✅ Authentication Controller
+✅ Register API
+✅ Login API
+✅ Frontend–Backend Integration
 
 ---
 
