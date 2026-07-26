@@ -1,0 +1,259 @@
+.issues-container {
+    min-height: 100vh;
+    padding: 100px 40px 40px;
+    background: linear-gradient(135deg, #0F172A, #0D9488);
+}
+
+.issues-container h2 {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 36px;
+}
+
+.no-issues {
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    margin-top: 50px;
+}
+
+/* Issues Grid */
+
+.issues-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* Issue Card */
+
+.issue-card {
+    width: 380px;
+    max-width: 100%;
+
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+    transition: 0.3s;
+}
+
+.issue-card:hover {
+    transform: translateY(-5px);
+}
+
+.issue-card h3 {
+    color: #0F172A;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.issue-card p {
+    margin: 10px 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+.issue-card strong {
+    color: #14B8A6;
+}
+
+/* Button Group */
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-group button {
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 6px;
+
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* View Details */
+
+.details-btn {
+    background: #6366F1;
+}
+
+.details-btn:hover {
+    background: #4F46E5;
+}
+
+/* Edit */
+
+.edit-btn {
+    background: #2563EB;
+}
+
+.edit-btn:hover {
+    background: #1D4ED8;
+}
+
+/* Update Status */
+
+.update-btn {
+    background: #14B8A6;
+}
+
+.update-btn:hover {
+    background: #0D9488;
+}
+
+/* Delete */
+
+.delete-btn {
+    background: #EF4444;
+}
+
+.delete-btn:hover {
+    background: #DC2626;
+}
+
+/* Edit Modal */
+
+.edit-modal {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.edit-card {
+    width: 500px;
+    max-width: 90%;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.edit-card h2 {
+    text-align: center;
+    color: #0F172A;
+    margin-bottom: 20px;
+}
+
+.edit-card input,
+.edit-card textarea {
+    width: 100%;
+
+    padding: 12px;
+    margin-bottom: 15px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    font-size: 16px;
+    font-family: inherit;
+    color: #333;
+
+    box-sizing: border-box;
+}
+
+.edit-card textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.edit-card input:focus,
+.edit-card textarea:focus {
+    outline: none;
+    border-color: #14B8A6;
+    box-shadow: 0 0 6px rgba(20, 184, 166, 0.4);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.modal-buttons button {
+    flex: 1;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 6px;
+
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.save-btn {
+    background: #14B8A6;
+}
+
+.save-btn:hover {
+    background: #0D9488;
+}
+
+.cancel-btn {
+    background: #64748B;
+}
+
+.cancel-btn:hover {
+    background: #475569;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .issues-container {
+        padding: 90px 20px 20px;
+    }
+
+    .issues-container h2 {
+        font-size: 28px;
+    }
+
+    .issues-grid {
+        justify-content: center;
+    }
+
+    .issue-card {
+        width: 100%;
+    }
+
+    .edit-card {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+    }
+
+}

@@ -1,66 +1,78 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "axios";
 import "../styles/Register.css";
 
 function Register() {
-  const [user, setUser] = useState({
+
+  const navigate = useNavigate();
+
+  const [register, setRegister] = useState({
     name: "",
     email: "",
-    password: "",
+    password: ""
   });
 
-  // Handle input changes
   const handleChange = (e) => {
-    setUser({
-      ...user,
-      [e.target.name]: e.target.value,
+    setRegister({
+      ...register,
+      [e.target.name]: e.target.value
     });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+
       const response = await axios.post(
         "http://localhost:8080/api/auth/register",
-        user
+        register
       );
 
-      console.log(response.data);
+      toast.success(response.data.message);
 
-      // Display success message
-      alert(response.data.message || "Registration Successful!");
+      setTimeout(() => {
 
-      // Clear the form
-      setUser({
-        name: "",
-        email: "",
-        password: "",
-      });
+        navigate("/login", {
+          state: {
+            email: register.email
+          }
+        });
+
+      }, 1200);
 
     } catch (error) {
+
       console.error(error);
 
       if (error.response) {
-        alert(error.response.data.message || "Registration Failed");
+        toast.error(
+          error.response.data.message || "Registration failed"
+        );
       } else {
-        alert("Server not running or cannot connect");
+        toast.error("Server not running or cannot connect");
       }
+
     }
   };
 
   return (
+
     <div className="register-container">
+
       <div className="register-card">
-        <h2>Register</h2>
+
+        <h2>Create Account</h2>
 
         <form onSubmit={handleSubmit}>
+
           <input
             type="text"
             name="name"
             placeholder="Full Name"
-            value={user.name}
+            value={register.name}
             onChange={handleChange}
             required
           />
@@ -69,7 +81,7 @@ function Register() {
             type="email"
             name="email"
             placeholder="Email"
-            value={user.email}
+            value={register.email}
             onChange={handleChange}
             required
           />
@@ -78,16 +90,23 @@ function Register() {
             type="password"
             name="password"
             placeholder="Password"
-            value={user.password}
+            value={register.password}
             onChange={handleChange}
             required
           />
 
-          <button type="submit">Register</button>
+          <button type="submit">
+            Register
+          </button>
+
         </form>
+
       </div>
+
     </div>
+
   );
+
 }
 
 export default Register;

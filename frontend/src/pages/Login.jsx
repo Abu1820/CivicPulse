@@ -1,15 +1,18 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "axios";
 import "../styles/Login.css";
 
 function Login() {
-  const [login, setLogin] = useState({
-    email: "",
-    password: "",
-  });
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const [login, setLogin] = useState({
+    email: location.state?.email || "",
+    password: "",
+  });
 
   const handleChange = (e) => {
     setLogin({
@@ -22,34 +25,54 @@ function Login() {
     e.preventDefault();
 
     try {
+
       const response = await axios.post(
         "http://localhost:8080/api/auth/login",
         login
       );
 
-      alert(response.data.message);
+      toast.success(response.data.message);
 
-      localStorage.setItem("user", JSON.stringify(response.data));
+      // Save logged-in user
+      const user = {
+        name: response.data.name,
+        email: response.data.email,
+        role: response.data.role,
+      };
 
-      navigate("/dashboard");
+      localStorage.setItem("user", JSON.stringify(user));
+
+      // Redirect based on role
+      if (response.data.role === "ADMIN") {
+        navigate("/admin-dashboard");
+      } else {
+        navigate("/");
+      }
 
     } catch (error) {
+
       console.error(error);
 
       if (error.response) {
-        alert(error.response.data.message);
+        toast.error(
+          error.response.data.message || "Invalid email or password"
+        );
       } else {
-        alert("Server not running");
+        toast.error("Server not running or cannot connect");
       }
+
     }
   };
 
   return (
     <div className="login-container">
+
       <div className="login-card">
+
         <h2>Login</h2>
 
         <form onSubmit={handleSubmit}>
+
           <input
             type="email"
             name="email"
@@ -68,9 +91,14 @@ function Login() {
             required
           />
 
-          <button type="submit">Login</button>
+          <button type="submit">
+            Login
+          </button>
+
         </form>
+
       </div>
+
     </div>
   );
 }
