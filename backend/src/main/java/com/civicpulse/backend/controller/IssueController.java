@@ -2,8 +2,10 @@ package com.civicpulse.backend.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.civicpulse.backend.dto.DashboardStats;
 import com.civicpulse.backend.dto.IssueRequest;
 import com.civicpulse.backend.entity.Issue;
 import com.civicpulse.backend.service.IssueService;
@@ -19,30 +21,64 @@ public class IssueController {
         this.issueService = issueService;
     }
 
+    // Create a new issue
     @PostMapping
-    public Issue createIssue(@RequestBody IssueRequest request) {
-        return issueService.createIssue(request);
+    public ResponseEntity<Issue> createIssue(@RequestBody IssueRequest request) {
+
+        Issue issue = issueService.createIssue(request);
+
+        return ResponseEntity.ok(issue);
     }
 
+    // Get all issues
     @GetMapping
-    public List<Issue> getAllIssues() {
-        return issueService.getAllIssues();
-    }
-    @PutMapping("/{id}/status")
-    public Issue updateStatus(@PathVariable Long id,
-                              @RequestParam String status) {
+    public ResponseEntity<List<Issue>> getAllIssues() {
 
-        return issueService.updateStatus(id, status);
+        return ResponseEntity.ok(issueService.getAllIssues());
     }
+
+    // Get issue by ID
     @GetMapping("/{id}")
-    public Issue getIssueById(@PathVariable Long id) {
-        return issueService.getIssueById(id);
+    public ResponseEntity<Issue> getIssueById(@PathVariable Long id) {
+
+        return ResponseEntity.ok(issueService.getIssueById(id));
     }
+
+    // Update issue details
+    @PutMapping("/{id}")
+    public ResponseEntity<Issue> updateIssue(
+            @PathVariable Long id,
+            @RequestBody IssueRequest request) {
+
+        Issue issue = issueService.updateIssue(id, request);
+
+        return ResponseEntity.ok(issue);
+    }
+
+    // Update issue status
+    @PutMapping("/{id}/status")
+    public ResponseEntity<Issue> updateStatus(
+            @PathVariable Long id,
+            @RequestParam String status) {
+
+        Issue issue = issueService.updateStatus(id, status);
+
+        return ResponseEntity.ok(issue);
+    }
+
+    // Delete issue
     @DeleteMapping("/{id}")
-    public String deleteIssue(@PathVariable Long id) {
+    public ResponseEntity<String> deleteIssue(@PathVariable Long id) {
 
         issueService.deleteIssue(id);
 
-        return "Issue deleted successfully";
+        return ResponseEntity.ok("Issue deleted successfully");
+    }
+
+    // Dashboard statistics
+    @GetMapping("/dashboard/stats")
+    public ResponseEntity<DashboardStats> getDashboardStats() {
+
+        return ResponseEntity.ok(issueService.getDashboardStats());
     }
 }
