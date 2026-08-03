@@ -4,7 +4,7 @@
 
 CivicPulse is a Full Stack Web Application that enables citizens to report and track civic issues such as potholes, garbage dumps, water leakage, and streetlight failures.
 
-This project is being developed step by step using **React**, **Spring Boot**, and **MySQL**.
+The project is being developed as part of the **Infosys Springboard Virtual Internship** using **React**, **Spring Boot**, and **MySQL**.
 
 ---
 
@@ -12,13 +12,64 @@ This project is being developed step by step using **React**, **Spring Boot**, a
 
 ## ✅ Milestone 1 & 2 Completed
 
-The application currently supports:
+Current features include:
 
 - User Registration
 - User Login
+- Responsive Authentication UI
+- React Router Navigation
 - React–Spring Boot Integration
 - MySQL Database Connectivity
-- Responsive Authentication UI
+
+---
+
+# 🗺️ Project Roadmap
+
+## ✅ Milestone 1 – Frontend Foundation
+
+- React (Vite) Project Setup
+- Responsive Home Page
+- User Registration Page
+- User Login Page
+- React Router Navigation
+- Axios Configuration
+- Responsive UI Design
+
+---
+
+## ✅ Milestone 2 – Backend Foundation
+
+- Spring Boot Project Setup
+- Spring Data JPA Configuration
+- MySQL Database Integration
+- User Entity
+- Repository Layer
+- Service Layer
+- Authentication Controller
+- User Registration API
+- User Login API
+- Frontend–Backend Integration
+
+---
+
+## 🔄 Milestone 3 – Core CivicPulse Features
+
+- Report Civic Issue
+- View Reported Issues
+- Dashboard Statistics
+- Dynamic Navigation Bar
+- Logout Functionality
+- Route Protection
+
+---
+
+## ⏳ Milestone 4 – Advanced Features
+
+- Spring Security
+- JWT Authentication
+- Role-Based Access
+- Deployment
+- Project Optimization
 
 ---
 
@@ -43,18 +94,18 @@ Develop a scalable civic issue reporting platform where users can:
 - Axios
 - CSS
 
-## Backend
+### Backend
 
 - Java 17
 - Spring Boot
 - Spring Web
 - Spring Data JPA
 
-## Database
+### Database
 
 - MySQL
 
-## Tools
+### Development Tools
 
 - VS Code
 - Eclipse IDE
@@ -85,30 +136,28 @@ CivicPulse_Project/
 
 ---
 
-# ✅ Features Completed
+# ✨ Features Completed
 
-## Authentication
-
-### User Registration
+## 🔐 User Registration
 
 - Register new users
-- Validate user inputs
-- Save user details in MySQL
+- Input validation
+- Store user details in MySQL
 - React form integrated with Spring Boot REST API
 
-### User Login
+### 🔐 User Login
 
 - Login using email and password
 - Validate user credentials
 - Display success/error messages
-- Navigate to Dashboard after successful login
+- Navigate after successful login
 
 ---
 
 # 🌐 REST API Endpoints
 
 | Method | Endpoint | Description |
-|---------|----------|-------------|
+|--------|----------|-------------|
 | POST | `/api/auth/register` | Register a new user |
 | POST | `/api/auth/login` | Login user |
 
@@ -119,7 +168,7 @@ CivicPulse_Project/
 ## User Table
 
 | Field | Type |
-|-------|------|
+|------|------|
 | id | Long |
 | name | String |
 | email | String |
@@ -131,78 +180,83 @@ CivicPulse_Project/
 
 ```
 React Frontend
-      │
-      ▼
+        │
+        ▼
 Axios HTTP Request
-      │
-      ▼
+        │
+        ▼
 Spring Boot REST API
-      │
-      ▼
+        │
+        ▼
 Service Layer
-      │
-      ▼
+        │
+        ▼
 Repository Layer
-      │
-      ▼
+        │
+        ▼
 MySQL Database
-      │
-      ▼
+        │
+        ▼
 Response
-      │
-      ▼
+        │
+        ▼
 React UI
 ```
 
 ---
 
-# 📈 Progress
+# 📈 Development Progress
 
-## Backend
+## ✅ Milestone 1 – Frontend
 
-- ✅ Spring Boot Setup
-- ✅ MySQL Configuration
-- ✅ User Entity
-- ✅ User Repository
-- ✅ User Service
-- ✅ Authentication Controller
-- ✅ Register API
-- ✅ Login API
+- React Project Setup
+- Home Page
+- Navbar
+- Hero Section
+- Features Section
+- Footer
+- Register Page
+- Login Page
+- React Router
+- Axios Integration
 
-## Frontend
+### ✅ Milestone 2 – Backend
 
-- ✅ React Project Setup
-- ✅ React Router
-- ✅ Navbar
-- ✅ Hero Section
-- ✅ Features Section
-- ✅ Footer
-- ✅ Register Page
-- ✅ Login Page
-- ✅ Axios Integration
+- Spring Boot Setup
+- MySQL Configuration
+- User Entity
+- User Repository
+- User Service
+- Authentication Controller
+- Registration API
+- Login API
+- Frontend–Backend Integration
 
 ---
 
-# 🎨 Theme
+# 🎨 UI Theme
 
 | Purpose | Color |
-|----------|--------|
-| Primary | #0F172A |
-| Secondary | #0D9488 |
-| Accent | #14B8A6 |
-| Background | #F0FDFA |
+|---------|--------|
+| Primary | `#0F172A` |
+| Secondary | `#0D9488` |
+| Accent | `#14B8A6` |
+| Background | `#F0FDFA` |
 
 ---
 
 # 📸 Screenshots
 
-## Home Page
+## 🏠 Home Page
+
 ![Home](screenshots/home.png)
 
-## Register Page
+### 📝 Register Page
+
 ![Register](screenshots/register.png)
 
-## Login Page
+### 🔐 Login Page
+
 ![Login](screenshots/login.png)
 
 ---
@@ -217,31 +271,22 @@ React UI
 - Route Protection
 - Spring Security
 - JWT Authentication
-
----
-
-# 📚 Exercises
-
-This repository also contains Java programming and Data Structures & Algorithms practice inside the **exercises** folder.
-
-Topics include:
-
-- Arrays
-- Strings
-- Linked Lists
-- Trees
-- Graphs
-- LeetCode
-- HackerRank
+- Role-Based Authorization
 
 ---
 
 # 👨‍💻 Author
 
-**Abdul**
+**Abdul Majeed R**
 
-GitHub: https://github.com/Abu1820
+🔗 GitHub: https://github.com/Abu1820
+
+🔗 LinkedIn: https://www.linkedin.com/in/abdulmajeedr
 
 ---
 
-⭐ If you found this project interesting, feel free to star the repository.
+# 📄 License
+
+This project is developed for learning and portfolio purposes as part of the **Infosys Springboard Virtual Internship**.
+
+⭐ If you found this project helpful, consider giving it a star!
