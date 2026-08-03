@@ -10,6 +10,7 @@ public class AuthResponse {
     private String name;
     private String email;
     private Role role;
+    private String token;
 
     public AuthResponse() {
     }
@@ -25,13 +26,15 @@ public class AuthResponse {
                         boolean success,
                         String name,
                         String email,
-                        Role role) {
+                        Role role,
+                        String token) {
 
         this.message = message;
         this.success = success;
         this.name = name;
         this.email = email;
         this.role = role;
+        this.token = token;
     }
 
     public String getMessage() {
@@ -54,6 +57,10 @@ public class AuthResponse {
         return role;
     }
 
+    public String getToken() {
+        return token;
+    }
+
     public void setMessage(String message) {
         this.message = message;
     }
@@ -72,5 +79,9 @@ public class AuthResponse {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

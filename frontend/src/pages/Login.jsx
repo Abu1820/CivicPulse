@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
+import api from "../api/axiosConfig";
 import "../styles/Login.css";
 
 function Login() {
@@ -26,14 +26,21 @@ function Login() {
 
     try {
 
-      const response = await axios.post(
-        "http://localhost:8080/api/auth/login",
-        login
-      );
+      const response = await api.post("/auth/login", login);
 
+      // Login Failed
+      if (!response.data.success) {
+        toast.error(response.data.message);
+        return;
+      }
+
+      // Login Success
       toast.success(response.data.message);
 
-      // Save logged-in user
+      // Save JWT Token
+      localStorage.setItem("token", response.data.token);
+
+      // Save Logged-in User
       const user = {
         name: response.data.name,
         email: response.data.email,
@@ -42,7 +49,7 @@ function Login() {
 
       localStorage.setItem("user", JSON.stringify(user));
 
-      // Redirect based on role
+      // Redirect Based on Role
       if (response.data.role === "ADMIN") {
         navigate("/admin-dashboard");
       } else {

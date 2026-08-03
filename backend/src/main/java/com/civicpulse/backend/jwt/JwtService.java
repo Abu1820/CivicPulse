@@ -16,8 +16,8 @@ import io.jsonwebtoken.security.Keys;
 public class JwtService {
 
     // Generate a Base64 string from https://www.allkeysgenerator.com/
-    private static final String SECRET_KEY =
-            "REPLACE_WITH_YOUR_BASE64_SECRET_KEY";
+	private static final String SECRET_KEY =
+	        "VGhpc0lzQVN1cGVyU2VjcmV0S2V5Rm9ySldUQXV0aGVudGljYXRpb24xMjM0NTY3ODkw";
 
     private Key getSigningKey() {
 

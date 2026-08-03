@@ -8,6 +8,7 @@ import com.civicpulse.backend.dto.LoginRequest;
 import com.civicpulse.backend.dto.RegisterRequest;
 import com.civicpulse.backend.entity.Role;
 import com.civicpulse.backend.entity.User;
+import com.civicpulse.backend.jwt.JwtService;
 import com.civicpulse.backend.repository.UserRepository;
 
 @Service
@@ -15,12 +16,15 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
 
     public UserService(UserRepository userRepository,
-                       PasswordEncoder passwordEncoder) {
+                       PasswordEncoder passwordEncoder,
+                       JwtService jwtService) {
 
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
     }
 
     public AuthResponse register(RegisterRequest request) {
@@ -58,12 +62,16 @@ public class UserService {
             return new AuthResponse("Invalid password", false);
         }
 
+        // Generate JWT
+        String token = jwtService.generateToken(user.getEmail());
+
         return new AuthResponse(
                 "Login Successful",
                 true,
                 user.getName(),
                 user.getEmail(),
-                user.getRole()
+                user.getRole(),
+                token
         );
     }
 }
