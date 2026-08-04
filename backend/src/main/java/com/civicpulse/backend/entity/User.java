@@ -1,6 +1,10 @@
 package com.civicpulse.backend.entity;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 
@@ -27,6 +31,10 @@ public class User {
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdDate;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Issue> issues = new ArrayList<>();
 
     public User() {
     }
@@ -74,5 +82,13 @@ public class User {
 
     public LocalDateTime getCreatedDate() {
         return createdDate;
+    }
+
+    public List<Issue> getIssues() {
+        return issues;
+    }
+
+    public void setIssues(List<Issue> issues) {
+        this.issues = issues;
     }
 }

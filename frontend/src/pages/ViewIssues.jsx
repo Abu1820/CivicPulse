@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
+import api from "../api/axiosConfig";
 import "../styles/ViewIssues.css";
 
 function ViewIssues() {
@@ -9,6 +9,13 @@ function ViewIssues() {
     const navigate = useNavigate();
 
     const [issues, setIssues] = useState([]);
+
+    const [filters, setFilters] = useState({
+        search: "",
+        status: "",
+        category: "",
+        location: ""
+    });
 
     const [editingIssue, setEditingIssue] = useState(null);
 
@@ -20,12 +27,30 @@ function ViewIssues() {
     });
 
     // Fetch All Issues
-    const fetchIssues = async () => {
+    const fetchIssues = async (currentFilters = filters) => {
 
         try {
 
-            const response = await axios.get(
-                "http://localhost:8080/api/issues"
+            const params = new URLSearchParams();
+
+            if (currentFilters.search) {
+                params.append("search", currentFilters.search);
+            }
+
+            if (currentFilters.status) {
+                params.append("status", currentFilters.status);
+            }
+
+            if (currentFilters.category) {
+                params.append("category", currentFilters.category);
+            }
+
+            if (currentFilters.location) {
+                params.append("location", currentFilters.location);
+            }
+
+            const response = await api.get(
+                `/issues${params.toString() ? `?${params.toString()}` : ""}`
             );
 
             setIssues(response.data);
@@ -60,8 +85,8 @@ function ViewIssues() {
 
         try {
 
-            await axios.put(
-                `http://localhost:8080/api/issues/${id}/status?status=${newStatus}`
+            await api.put(
+                `/issues/${id}/status?status=${newStatus}`
             );
 
             toast.success("Status updated successfully!");
@@ -89,8 +114,8 @@ function ViewIssues() {
 
         try {
 
-            await axios.delete(
-                `http://localhost:8080/api/issues/${id}`
+            await api.delete(
+                `/issues/${id}`
             );
 
             toast.success("Issue deleted successfully!");
@@ -121,7 +146,7 @@ function ViewIssues() {
 
     };
 
-    // Handle Input Change
+    // Handle Issue Form Input Change
     const handleChange = (e) => {
 
         setFormData({
@@ -131,13 +156,25 @@ function ViewIssues() {
 
     };
 
+    // Handle Filter Input Change
+    const handleFilterChange = (e) => {
+
+        const { name, value } = e.target;
+
+        setFilters((prevFilters) => ({
+            ...prevFilters,
+            [name]: value
+        }));
+
+    };
+
     // Update Issue
     const updateIssue = async () => {
 
         try {
 
-            await axios.put(
-                `http://localhost:8080/api/issues/${editingIssue.id}`,
+            await api.put(
+                `/issues/${editingIssue.id}`,
                 formData
             );
 
@@ -159,15 +196,54 @@ function ViewIssues() {
 
     useEffect(() => {
 
-        fetchIssues();
+        fetchIssues(filters);
 
-    }, []);
+    }, [filters.search, filters.status, filters.category, filters.location]);
 
     return (
 
         <div className="issues-container">
 
             <h2>Reported Issues</h2>
+
+            <div className="filter-controls">
+
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Search by title, location, or category"
+                    value={filters.search}
+                    onChange={handleFilterChange}
+                />
+
+                <select
+                    name="status"
+                    value={filters.status}
+                    onChange={handleFilterChange}
+                >
+                    <option value="">All Statuses</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+
+                <input
+                    type="text"
+                    name="category"
+                    placeholder="Category"
+                    value={filters.category}
+                    onChange={handleFilterChange}
+                />
+
+                <input
+                    type="text"
+                    name="location"
+                    placeholder="Location"
+                    value={filters.location}
+                    onChange={handleFilterChange}
+                />
+
+            </div>
 
             {issues.length === 0 ? (
 

@@ -1,0 +1,25 @@
+{
+  "name": "civicpulse_project",
+  "version": "1.0.0",
+  "description": "CivicPulse is a Full Stack Web Application that enables citizens to report and track civic issues such as potholes, garbage dumps, water leakage, and streetlight failures.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abu1820/CivicPulse-Smart-Governance-Platform.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Abu1820/CivicPulse-Smart-Governance-Platform/issues"
+  },
+  "homepage": "https://github.com/Abu1820/CivicPulse-Smart-Governance-Platform#readme",
+  "dependencies": {
+    "pdf-parse": "^2.4.5",
+    "pdfjs-dist": "^6.2.108"
+  }
+}

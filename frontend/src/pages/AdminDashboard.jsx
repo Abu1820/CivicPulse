@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api/axiosConfig";
 import "../styles/AdminDashboard.css";
 
 function AdminDashboard() {
@@ -22,8 +22,8 @@ function AdminDashboard() {
 
         try {
 
-            const response = await axios.get(
-                "http://localhost:8080/api/issues/dashboard/stats"
+            const response = await api.get(
+                "/issues/dashboard/stats"
             );
 
             setStats(response.data);
@@ -36,12 +36,22 @@ function AdminDashboard() {
 
     };
 
-    const fetchRecentIssues = async () => {
+    const fetchRecentIssues = async (currentSearch = search, currentStatus = statusFilter) => {
 
         try {
 
-            const response = await axios.get(
-                "http://localhost:8080/api/issues"
+            const params = new URLSearchParams();
+
+            if (currentSearch) {
+                params.append("search", currentSearch);
+            }
+
+            if (currentStatus && currentStatus !== "All") {
+                params.append("status", currentStatus);
+            }
+
+            const response = await api.get(
+                `/issues${params.toString() ? `?${params.toString()}` : ""}`
             );
 
             setIssues(response.data);
@@ -57,25 +67,11 @@ function AdminDashboard() {
     useEffect(() => {
 
         fetchDashboardStats();
-        fetchRecentIssues();
+        fetchRecentIssues(search, statusFilter);
 
-    }, []);
+    }, [search, statusFilter]);
 
-    const filteredIssues = issues.filter((issue) => {
-
-        const matchesSearch =
-            issue.title.toLowerCase().includes(search.toLowerCase()) ||
-            issue.category.toLowerCase().includes(search.toLowerCase()) ||
-            issue.location.toLowerCase().includes(search.toLowerCase()) ||
-            issue.status.toLowerCase().includes(search.toLowerCase());
-
-        const matchesStatus =
-            statusFilter === "All" ||
-            issue.status === statusFilter;
-
-        return matchesSearch && matchesStatus;
-
-    });
+    const filteredIssues = issues;
 
     return (
 

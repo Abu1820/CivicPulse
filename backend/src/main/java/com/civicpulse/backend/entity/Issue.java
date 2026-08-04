@@ -2,6 +2,8 @@ package com.civicpulse.backend.entity;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -29,6 +31,11 @@ public class Issue {
 
 	@Column(nullable = false, updatable = false)
 	private LocalDateTime createdDate;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	@JsonIgnore
+	private User user;
 
 	@PrePersist
 	public void onCreate() {
@@ -84,5 +91,13 @@ public class Issue {
 
 	public LocalDateTime getCreatedDate() {
 		return createdDate;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

@@ -51,19 +51,37 @@ public class UserService {
 
     public AuthResponse login(LoginRequest request) {
 
+        System.out.println("\n========== LOGIN DEBUG ==========");
+
+        System.out.println("Entered Email: " + request.getEmail());
+
         User user = userRepository.findByEmail(request.getEmail()).orElse(null);
 
         if (user == null) {
+            System.out.println("❌ User NOT FOUND");
             return new AuthResponse("User not found", false);
         }
 
-        // Verify encrypted password
-        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+        System.out.println("Database Email : " + user.getEmail());
+        System.out.println("Entered Password : " + request.getPassword());
+        System.out.println("Stored Password Hash : " + user.getPassword());
+
+        boolean passwordMatch =
+                passwordEncoder.matches(request.getPassword(), user.getPassword());
+
+        System.out.println("Password Match : " + passwordMatch);
+
+        if (!passwordMatch) {
+            System.out.println("❌ Invalid Password");
             return new AuthResponse("Invalid password", false);
         }
 
-        // Generate JWT
+        System.out.println("✅ Password Verified");
+
         String token = jwtService.generateToken(user.getEmail());
+
+        System.out.println("JWT Generated Successfully");
+        System.out.println("========== END LOGIN ==========\n");
 
         return new AuthResponse(
                 "Login Successful",

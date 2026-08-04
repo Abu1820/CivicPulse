@@ -3,6 +3,7 @@ package com.civicpulse.backend.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import com.civicpulse.backend.dto.DashboardStats;
@@ -25,16 +26,22 @@ public class IssueController {
     @PostMapping
     public ResponseEntity<Issue> createIssue(@RequestBody IssueRequest request) {
 
+        System.out.println("CREATE ISSUE CONTROLLER HIT");
+
         Issue issue = issueService.createIssue(request);
 
         return ResponseEntity.ok(issue);
     }
 
-    // Get all issues
+    // Get all issues with optional filters
     @GetMapping
-    public ResponseEntity<List<Issue>> getAllIssues() {
+    public ResponseEntity<List<Issue>> getAllIssues(
+            @RequestParam(required = false) String search,
+            @RequestParam(required = false) String status,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) String location) {
 
-        return ResponseEntity.ok(issueService.getAllIssues());
+        return ResponseEntity.ok(issueService.getAllIssues(search, status, category, location));
     }
 
     // Get issue by ID

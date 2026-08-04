@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import axios from "axios";
+import api from "../api/axiosConfig";
 import "../styles/ReportIssue.css";
 
 function ReportIssue() {
@@ -24,8 +24,8 @@ function ReportIssue() {
 
     try {
 
-      const response = await axios.post(
-        "http://localhost:8080/api/issues",
+      const response = await api.post(
+        "/issues",
         issue
       );
 

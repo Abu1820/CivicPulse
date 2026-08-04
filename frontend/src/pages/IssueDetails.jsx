@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../api/axiosConfig";
 import "../styles/IssueDetails.css";
 
 function IssueDetails() {
@@ -21,8 +21,8 @@ function IssueDetails() {
 
         try {
 
-            const response = await axios.get(
-                `http://localhost:8080/api/issues/${id}`
+            const response = await api.get(
+                `/issues/${id}`
             );
 
             setIssue(response.data);
